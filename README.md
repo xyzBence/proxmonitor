@@ -4,12 +4,18 @@ Proxmonitor is a **beta** web-based monitoring tool for Proxmox VE environments.
 
 **⚠️ Important Note**: This is a **work-in-progress beta project**. Many features are incomplete or unstable. Use with caution, as bugs are expected.
 
+![image](https://github.com/user-attachments/assets/7522679a-a03d-4317-9994-36f4b3995f9b)
+
+
 ## Features
 - Monitor Proxmox node metrics (CPU, RAM, network usage).
 - Track VM and container statuses.
 - Visualize storage usage and uptime.
 - Display server availability history and notifications.
 - Responsive design with dark mode support.
+
+## Temperature
+- The temperature display will require the sensors package, which needs to be configured in Proxmox. However, the script for this is not yet ready, so it must be installed manually.
 
 ## Setup
 1. Install dependencies: `pip install -r requirements.txt`
