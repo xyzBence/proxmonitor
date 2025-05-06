@@ -17,6 +17,13 @@ Proxmonitor is a **beta** web-based monitoring tool for Proxmox VE environments.
 ## Temperature
 - The temperature display will require the sensors package, which needs to be configured in Proxmox. However, the script for this is not yet ready, so it must be installed manually.
 
+You have to change the IP in line 749. 
+```
+@app.route('/api/temperature')
+def get_temperature():
+    temp_url = 'http://192.168.1.84:8080/avg_temp.txt'
+    try:
+```
 ## Setup
 1. Install dependencies: `pip install -r requirements.txt`
 2. Configure `config.json` with your Proxmox API credentials.
