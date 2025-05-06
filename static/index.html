@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proxmox Monitor</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Proxmox Monitor</h1>
+            <p class="last-update">Legutóbbi frissítés: <span id="last-update">Betöltés...</span></p>
+            <p class="temperature"><i class="fas fa-thermometer-half"></i> Hőmérséklet: <span id="temperature">Betöltés...</span></p>
+        </div>
+        <div class="notification-controls">
+            <i class="fas fa-moon dark-mode-toggle"></i>
+            <div class="notification-bell">
+                <i class="fas fa-bell"></i>
+                <span id="notification-count" class="notification-count">0</span>
+                <div id="notification-dropdown" class="notification-dropdown">
+                    <div class="notification-header">
+                        <h3>Értesítések</h3>
+                        <button id="clear-all-notifications">Összes törlése</button>
+                    </div>
+                    <div id="notification-list"></div>
+                </div>
+            </div>
+        </div>
+        <div id="popup-notification" class="popup-notification"></div>
+        <div class="dashboard">
+            <div class="left-column">
+                <div class="section">
+                    <h2>Szerver Elérhetőség</h2>
+                    <div class="status">
+                        <span id="status-indicator">Ellenőrzés...</span>
+                        <div class="status-bars" id="status-bars"></div>
+                        <p>Futási idő: <span id="uptime">Betöltés...</span></p>
+                    </div>
+                </div>
+                <div class="section">
+                    <h2>Proxmox Node: <span id="node-name">Betöltés...</span></h2>
+                    <div class="metrics">
+                        <div class="metric">
+                            <p>CPU Használat: <span id="cpu-usage">Betöltés...</span></p>
+                            <canvas id="cpu-chart" width="250" height="80"></canvas>
+                        </div>
+                        <div class="metric">
+                            <p>RAM Használat: <span id="ram-usage">Betöltés...</span></p>
+                            <p>RAM: <span id="ram-details">Betöltés...</span></p>
+                            <canvas id="ram-chart" width="250" height="80"></canvas>
+                        </div>
+                        <div class="metric">
+                            <p>Hálózat Használat</p>
+                            <p>Bejövő: <span id="network-in">Betöltés...</span></p>
+                            <p>Kimenő: <span id="network-out">Betöltés...</span></p>
+                            <canvas id="network-chart" width="250" height="80"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right-column">
+                <div class="section scrollable-section">
+                    <h2>Tárolók</h2>
+                    <div id="storage-list"></div>
+                </div>
+                <div class="section scrollable-section">
+                    <h2>VM-ek és CT-k</h2>
+                    <div class="table-wrapper">
+                        <table id="vm-table">
+                            <thead>
+                                <tr>
+                                    <th>Típus</th>
+                                    <th>Név</th>
+                                    <th>Állapot</th>
+                                    <th>CPU Használat</th>
+                                    <th>RAM Használat</th>
+                                    <th>Futási Idő</th>
+                                </tr>
+                            </thead>
+                            <tbody id="vm-table-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">×</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+    <audio id="notification-sound" src="/bell.mp3"></audio>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93b145e6d8e56757',t:'MTc0NjQ1ODk2My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+</body>
+</html>

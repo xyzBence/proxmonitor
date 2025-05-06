@@ -1,0 +1,6 @@
+Flask
+requests
+proxmoxer
+mysql-connector-python
+psutil
+paramiko

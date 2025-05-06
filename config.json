@@ -1,0 +1,7 @@
+{
+    "proxmox": {
+        "host": "x.x.x.x:8006",
+        "user": "root@pam",
+        "password": ""
+    }
+}
